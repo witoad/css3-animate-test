@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>photo-manage</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" href="css/reset.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script type="text/javascript" src='js/jquery.min.js'></script>
+</head>
+<body>
+<div class="g-doc">
+   <article class="menu">
+         <input type="checkbox" href="#" class="qingdao" name="qingdao" id="qingdao"/>
+        <label class="menu-item" for="qingdao">
+          <span class="hamburger">&nbsp;&nbsp;转一下</span>
+        </label>
+     
+        <figure class="g-sd">
+           <dl><dd><image draggable=true src='image/Penguins.jpg'/></dd><dd><image src='image/Tulips.jpg' draggable=true/></dd></dl>   
+           <dl><dd><image src='image/Desert.jpg' draggable=true/></dd><dd><image draggable=true src='image/Penguins.jpg'/></dd></dl> 
+           <dl><dd><image src='image/Chrysanthemum.jpg' draggable=true/></dd><dd><image src='image/Tulips.jpg' draggable=true/></dd></dl>   
+           <dl><dd><image src='image/Jellyfish.jpg' draggable=true/></dd><dd><image draggable=true src='image/Penguins.jpg'/></dd></dl>   
+           <dl><dd><image src='image/Koala.jpg' draggable=true/></dd><dd><image src='image/Desert.jpg' draggable=true/></dd></dl>   
+           <dl><dd><image src='image/Tulips.jpg' draggable=true/></dd><dd><image src='image/Desert.jpg' draggable=true/></dd></dl>   
+        </figure>
+ 
+  </artical>
+   
+    
+</div>
+<script type="text/javascript">
+var origin , target;
+ $('.g-sd').find('img').on('dragstart',
+                             function(e){
+                            origin = e.target;
+                            console.log(origin);
+                             })
+                        .on("dragover",
+                     function(e) {
+              if (e.stopPropagation()) e.stopPropagation();
+              if (e.preventDefault) e.preventDefault(); // allows us to drop
+             // only dropEffect='copy' will be dropable
+          }).on("drop",
+                     function(e) {
+                     target = e.target;
+                     console.log(target);
+                     var a = $(origin).clone(true) ;
+                     var b = $(target).clone(true) ;
+                     $(target).replaceWith(a);
+                     $(origin).replaceWith(b);
+                     // origin.parentNode.appendChild(target);
+                     // target.parentNode.appendChild(origin);
+                     // target.parentNode.removeChild(target);
+                     // origin.parentNode.removeChild(origin);
+                    
+          });
+</script>
+</body>
+</html>
